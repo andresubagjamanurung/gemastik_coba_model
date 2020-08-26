@@ -1,0 +1,55 @@
+<html>
+
+<!-- NOTE : Skenario pengiriman dan pengambilan data             -->
+<!-- 1. Pada saat ESP32 akan mengirimkan gambar, ubah val "num"  -->
+<!--    di dalam tree "id" ESP32 menjadi val+1, sehingga program -->
+<!--    web-app akan berjaga hingga pengiriman selesai           -->
+<!-- 2. Setelah selesai mengirim gambar, ESP32 harus mengubah    -->
+<!--    "done" menjadi true sehingga web-app dapat mengambil     -->
+<!--    gambar. Setelah seluruh base64 diambil, "done" -> false  -->
+
+<head>
+	<title>Image Classification</title>
+	<meta charset="UTF-8" />
+
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyANT5NmvKpAJsDpCyDtGDODsEkkcYI_v4M",
+	    authDomain: "gemastik-9ea85.firebaseapp.com",
+	    databaseURL: "https://gemastik-9ea85.firebaseio.com",
+	    projectId: "gemastik-9ea85",
+	    storageBucket: "gemastik-9ea85.appspot.com",
+	    messagingSenderId: "795272113371",
+	    appId: "1:795272113371:web:eff9953243353e9478b0fe",
+	    measurementId: "G-9GCF3JV3V8"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+
+</head>
+
+<body onload="setup()">
+	
+	<div style="text-align:left">
+		<h1>Image Classification</h1>
+		<img id="base64image"></img>
+		<pre id="predictions"></pre>
+		<canvas id="canvas" style="display:none"></canvas>
+	</div>
+	<p>Modified from: https://codepen.io/jawache/pen/deeWZq</p>
+	<pre id="object">belum</pre>
+	<script src="index.js"></script>
+</body>
+
+</html>
+
